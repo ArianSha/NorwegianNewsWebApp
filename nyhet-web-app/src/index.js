@@ -1,11 +1,8 @@
 import React from 'react'
-import ReactDom from 'react-dom'
+import ReactDOM from 'react-dom/client'
 import "./style.css"
-import Header from './header.js'
-import Content from './content.js'
-import {useState, useEffect } from "react";
-import {db} from './Firebase'
-import {collection, getDocs} from 'firebase/firestore'
+import Header from './Header.js'
+import Content from './Content.js'
 
 
 function Page(){
@@ -18,4 +15,9 @@ function Page(){
   )
 }
 
-ReactDom.render(<Page/>, document.getElementById('root'))
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <Page/>
+);
+
+// ReactDom.render(<Page/>, document.getElementById('root'))
