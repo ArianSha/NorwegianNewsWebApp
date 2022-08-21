@@ -1,0 +1,120 @@
+body{
+    background-color: #d3d3d3ae;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#header{
+    display: flex;
+    background-color: #373e98;
+    border-bottom-style:solid;
+    padding-top: 15px;
+    height: 70px;
+}
+
+#title{
+    padding-left: 80px;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 35px;
+    font-weight: 700;
+    color: beige;
+    text-decoration: none;
+}
+
+#aboutLink{
+    margin-right:20px;
+    margin-top: 10px;
+    font-size: 25px;
+    font-weight: 700;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+#content{
+    padding: 20px 0px;
+    display: grid;
+    width: 55%;
+    margin: 0 auto;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+#artikkel{
+    border-radius: 10px;
+    background-color: whitesmoke;
+}
+
+#artikkel img{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    width: 100%;
+    height: 300px;
+    margin: 0 auto;
+    display: block;
+}
+
+#artikkel h3{
+    margin: 10px;
+    text-align: center;
+    color: #292827;
+    font-size: 25px;
+}
+
+#artikkel:hover{
+    cursor: pointer;
+    background-color: white;
+}
+
+#about{
+    display: grid;
+    width: 55%;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+#portrait{
+    display: block;
+    width: 25%;
+    margin-right: auto;
+    margin-left: auto ;
+}
+
+#aboutText{
+    padding-top: 20px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    color: rgb(0, 0, 0);
+}
+
+#portraitText{
+    font-style: italic;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
+    color: rgb(28, 28, 28);
+}
+
+#contactInfo{
+    justify-content: center;
+    align-items: center;
+    margin-top: 70px;
+    display: flex;
+    grid-gap: 10px;
+}
+
+#contactInfo img{
+    height: 40px;
+}
+
+#contactInfo a{
+    text-shadow: 1px 1px 1px 1px rgba(0,0,0,0);
+    font-size: 15px;
+    font-weight: 500;
+    color: rgb(28, 28, 28);
+}
