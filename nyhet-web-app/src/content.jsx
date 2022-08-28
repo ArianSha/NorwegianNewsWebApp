@@ -22,8 +22,8 @@ export default function Content() {
     
     return (
         <div id = 'content'>
-            {articles.map(({ headline, url, image, alt }) => (
-                <Article headline = {headline} url = {url} img = {image} alt = {alt}/>
+            {articles.map(({ headline, url, image, source }) => (
+                <Article key = {url} headline = {headline} url = {url} img = {image} source = {source}/>
             ))}
         </div>
     )
