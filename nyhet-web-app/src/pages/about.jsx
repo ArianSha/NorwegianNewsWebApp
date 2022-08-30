@@ -1,9 +1,10 @@
-import React from "react";
-import Header from "../header";
+import React from "react"
+import Header from "../header"
 import portrait from '../images/barcelonaKirke.jpg'
 import linkedIn from '../images/linkedin.png'
 import github from '../images/github.png'
 import mail from '../images/mail.png'
+import '../styles/about.css'
 
 export default function About() {
 
@@ -19,6 +20,9 @@ export default function About() {
             </figure>
 
             <p id = 'aboutText'>
+
+
+                Hi, I'm Arian. I'm a student at the University of Oslo, studying Computer Science. <br />
                 This is a simple webapp that fetches articles from numerous norwegian news sources and displays them. 
                 The application is built with React and Firebase, and the articles are fetched using Puppeteer.
                 

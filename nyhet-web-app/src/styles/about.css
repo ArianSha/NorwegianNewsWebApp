@@ -1,0 +1,63 @@
+#about{
+    display: grid;
+    width: 55%;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+#aboutText{
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 20px;
+    font-size: 20px;
+    text-align: center;
+    font-weight: 500;
+}
+
+#portrait{
+    min-width: auto;
+    display: block;
+    width: 30%;
+    margin-right: auto;
+    margin-left: auto ;
+}
+
+#portraitText{
+    font-style: italic;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
+    color: rgb(80, 80, 80);
+}
+
+#contactInfo{
+    justify-content: center;
+    align-items: center;
+    margin-top: 70px;
+    display: flex;
+    grid-gap: 10px;
+}
+
+#contactInfo img{
+    height: 40px;
+}
+
+#contactInfo a{
+    text-shadow: 1px 1px 1px 1px rgba(0,0,0,0);
+    font-size: 15px;
+    font-weight: 500;
+    color: rgb(28, 28, 28);
+}
+
+@media only screen and (max-width: 900px) {
+    #aboutText{
+        font-size: 20px;
+    }
+    #portrait{
+        min-width: 150px;
+        width: 40%;
+    }
+    #contactInfo{
+        margin-top: 30px;
+        grid-gap: 5px;
+    }
+}
