@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from "react";
 import Article from './article'
 import { db } from './firebase'
-import { collection, getDocs } from 'firebase/firestore'
+import { collection, getDocs, orderBy, query } from 'firebase/firestore'
 
 
 export default function Content() {
@@ -13,7 +13,9 @@ export default function Content() {
         const reference = collection(db, "articles");
         
         async function getDocuments () {
-            const docsSnap = await getDocs(reference);
+
+            const q = query(reference, orderBy("timestamp", "desc"))
+            const docsSnap = await getDocs(q);
             setArticles(docsSnap.docs.map(doc => doc.data()));
         };
         getDocuments();
