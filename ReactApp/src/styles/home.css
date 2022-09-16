@@ -18,12 +18,11 @@ body{
     gap: 35px 10px;
 }
 
-#article{
+.article{
     background-color: #303030;
 }
 
-
-#thumbnail{
+.thumbnail{
     background-color: #393939;
     height: 300px;
     width: 100%;
@@ -34,21 +33,33 @@ body{
     border-bottom: 2px solid #000000;
 }
 
-#articleHeadline{
+.articleHeadline{
     margin: 10px;
     text-align: center;
     color: whitesmoke;
     font-size: 25px;
 }
 
-#sourceLogo{
+.sourceLogo{
     width: 50px;
 }
 
-
-#article:hover{
+.article:hover{
     cursor: pointer;
     background-color:#383838;
+}
+
+.hidden{
+    opacity: 0;
+    filter: blur(5px);
+    transform: translatex(-100%);
+    transition: all 0.5s
+}
+
+.appear{
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
 }
 
 @media only screen and (max-width: 900px) {
@@ -63,5 +74,4 @@ body{
     #articleHeadline{
         font-size: 20px;
     }
-
 }
