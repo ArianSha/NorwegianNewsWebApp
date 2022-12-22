@@ -48,6 +48,6 @@
     "react-scripts": "5.0.1"
   },
   "lint-staged": {
-    "*.{js, jsx}": "prettier --write"
+    "*.{js, jsx}": "npx prettier --write"
   }
 }
