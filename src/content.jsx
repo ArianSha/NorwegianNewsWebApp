@@ -1,33 +1,33 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import Article from "./article";
-import { db } from "./firebase";
-import { collection, limit, getDocs, orderBy, query } from "firebase/firestore";
+import React from 'react';
+import { useState, useEffect } from 'react';
+import Article from './article';
+import { db } from './firebase';
+import { collection, limit, getDocs, orderBy, query } from 'firebase/firestore';
 
 export default function Content() {
-  const [articles, setArticles] = useState([]);
+	const [articles, setArticles] = useState([]);
 
-  useEffect(() => {
-    const reference = collection(db, "articles");
+	useEffect(() => {
+		const reference = collection(db, 'articles');
 
-    (async () => {
-      const q = query(reference, orderBy("timestamp", "desc"), limit(200));
-      const docsSnap = await getDocs(q);
-      setArticles(docsSnap.docs.map((doc) => doc.data()));
-    })();
-  }, []);
+		(async () => {
+			const q = query(reference, orderBy('timestamp', 'desc'), limit(200));
+			const docsSnap = await getDocs(q);
+			setArticles(docsSnap.docs.map((doc) => doc.data()));
+		})();
+	}, []);
 
-  return (
-    <div id="content">
-      {articles.map(({ headline, url, image, source }) => (
-        <Article
-          key={url}
-          headline={headline}
-          url={url}
-          img={image}
-          source={source}
-        />
-      ))}
-    </div>
-  );
+	return (
+		<div id='content'>
+			{articles.map(({ headline, url, image, source }) => (
+				<Article
+					key={url}
+					headline={headline}
+					url={url}
+					img={image}
+					source={source}
+				/>
+			))}
+		</div>
+	);
 }

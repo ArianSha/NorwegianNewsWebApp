@@ -21,7 +21,7 @@
   },
   "eslintConfig": {
     "parserOptions": {
-      "ecmaVersion": 2022
+      "ecmaVersion": "latest"
     },
     "extends": [
       "react-app",
@@ -54,7 +54,11 @@
     "prettier": "^2.8.1"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+    "src/**/*.{json,css,scss,md}": [
+      "npx prettier --write"
+    ],
+
+    "src/**/*.{js,jsx,ts,tsx}": [
       "npx prettier --write",
       "npx eslint --fix"
     ]
