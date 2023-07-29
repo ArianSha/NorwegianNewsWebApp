@@ -11,6 +11,8 @@
 }
 
 #headerTitle {
+	margin-top: 10px;
+	margin-bottom: 10px;
 	text-align: center;
 	font-size: 45px;
 	background-image: linear-gradient(to bottom left, #553c9a, #ee4b2b);
@@ -21,6 +23,7 @@
 }
 
 #aboutTitle {
+	margin-top: 10px;
 	float: right;
 	padding-top: 10px;
 	padding-right: 20px;

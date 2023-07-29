@@ -63,6 +63,50 @@ body {
 	filter: blur(0);
 }
 
+.overlay {
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	transition: opacity 500ms;
+}
+
+.popup {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-left: 10px;
+	margin: 0 auto;
+	margin-top: 10px;
+	background: #ffc2c2;
+	border-radius: 5px;
+	width: 30%;
+	position: relative;
+}
+
+.popup .close {
+	margin-left: auto;
+	margin-bottom: auto;
+	margin-top: 0;
+	padding-top: 0;
+	font-size: 35px;
+	font-weight: bold;
+	text-decoration: none;
+	border: none;
+	background: none;
+	color: #333;
+}
+
+.popup .close:hover {
+	cursor: pointer;
+	color: #525252;
+}
+
+.popup .content {
+	padding: 5px;
+	font-size: 14px;
+}
+
 @media only screen and (max-width: 900px) {
 	#content {
 		grid-template-columns: repeat(1, 1fr);
@@ -74,5 +118,13 @@ body {
 
 	#articleHeadline {
 		font-size: 20px;
+	}
+
+	.popup {
+		width: 80%;
+	}
+
+	.popup .content {
+		font-size: 12px;
 	}
 }

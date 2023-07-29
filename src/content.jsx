@@ -6,6 +6,7 @@ import { collection, limit, getDocs, orderBy, query } from 'firebase/firestore';
 
 export default function Content() {
 	const [articles, setArticles] = useState([]);
+	const [warningIsHidden, setWarningIsHidden] = useState(false);
 
 	useEffect(() => {
 		const reference = collection(db, 'articles');
@@ -18,16 +19,31 @@ export default function Content() {
 	}, []);
 
 	return (
-		<div id='content'>
-			{articles.map(({ headline, url, image, source }) => (
-				<Article
-					key={url}
-					headline={headline}
-					url={url}
-					img={image}
-					source={source}
-				/>
-			))}
-		</div>
+		<>
+			<div hidden={warningIsHidden} class='overlay'>
+				<div class='popup'>
+					<div class='content'>
+						<h2>
+							This site is no longer being maintained, and simply serves as an
+							archive for past articles.
+						</h2>
+					</div>
+					<button class='close' onClick={() => setWarningIsHidden(true)}>
+						&times;
+					</button>
+				</div>
+			</div>
+			<div id='content'>
+				{articles.map(({ headline, url, image, source }) => (
+					<Article
+						key={url}
+						headline={headline}
+						url={url}
+						img={image}
+						source={source}
+					/>
+				))}
+			</div>
+		</>
 	);
 }
