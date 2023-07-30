@@ -61,10 +61,10 @@ export default function Content() {
 			</div>
 			{error ? (
 				<div className='errorWrapper'>
-					<h4>
-						😵 {error} <br />
-					</h4>
+					<h4>😵 {error}</h4>
 					<h4> Too many people want to read Norwegian News!</h4>
+					<br />
+					<h4> Try again tomorrow</h4>
 				</div>
 			) : (
 				<InfiniteScroll
