@@ -10,7 +10,7 @@ body {
 		'Lucida Sans', Arial, sans-serif;
 }
 
-#content {
+.articles {
 	padding: 20px 0px;
 	display: grid;
 	width: 65%;
