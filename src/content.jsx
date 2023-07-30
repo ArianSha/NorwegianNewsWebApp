@@ -64,7 +64,7 @@ export default function Content() {
 					<h4>
 						😵 {error} <br />
 					</h4>
-					<h4> To many people want to read Norwegian News!</h4>
+					<h4> Too many people want to read Norwegian News!</h4>
 				</div>
 			) : (
 				<InfiniteScroll
