@@ -4,6 +4,7 @@ import Article from './article';
 import { db } from './firebase';
 import { collection, limit, getDocs, orderBy, query } from 'firebase/firestore';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import LoadingSpinner from './loadingSpinner';
 
 // rate limited by firebase free tier (50k reads/day)
 const MAX_ARTICLES = 1950;
@@ -19,6 +20,7 @@ const MAX_ARTICLES = 1950;
 export default function Content() {
 	const [articles, setArticles] = useState([]);
 	const [articlesToRender, setArticlesToRender] = useState([]);
+	const [error, setError] = useState(null);
 	const [hasMore, setHasMore] = useState(true);
 	const [warningIsHidden, setWarningIsHidden] = useState(false);
 
@@ -30,10 +32,15 @@ export default function Content() {
 				orderBy('timestamp', 'desc'),
 				limit(MAX_ARTICLES)
 			);
-			const docsSnap = await getDocs(q);
-			const articles = docsSnap.docs.map((doc) => doc.data());
-			setArticles(articles);
-			setArticlesToRender(articles.slice(0, 33));
+			try {
+				const docsSnap = await getDocs(q);
+				const articles = docsSnap.docs.map((doc) => doc.data());
+				setArticles(articles);
+				setArticlesToRender(articles.slice(0, 33));
+			} catch (e) {
+				setError(e.message);
+				return;
+			}
 		})();
 	}, []);
 
@@ -52,36 +59,45 @@ export default function Content() {
 					</button>
 				</div>
 			</div>
-			<InfiniteScroll
-				className='articles'
-				dataLength={articlesToRender.length}
-				next={() => {
-					if (articlesToRender.length === MAX_ARTICLES) {
-						setHasMore(false);
-						return;
-					}
-					setArticlesToRender(
-						articlesToRender.concat(
-							articles.slice(
-								articlesToRender.length,
-								articlesToRender.length + 33
+			{error ? (
+				<div className='errorWrapper'>
+					<h4>
+						😵 {error} <br />
+					</h4>
+					<h4> To many people want to read Norwegian News!</h4>
+				</div>
+			) : (
+				<InfiniteScroll
+					className='articles'
+					dataLength={articlesToRender.length}
+					next={() => {
+						if (articlesToRender.length === MAX_ARTICLES) {
+							setHasMore(false);
+							return;
+						}
+						setArticlesToRender(
+							articlesToRender.concat(
+								articles.slice(
+									articlesToRender.length,
+									articlesToRender.length + 33
+								)
 							)
-						)
-					);
-				}}
-				hasMore={hasMore}
-				loader={<h4>Loading...</h4>}
-			>
-				{articlesToRender.map(({ headline, url, image, source }) => (
-					<Article
-						key={url}
-						headline={headline}
-						url={url}
-						img={image}
-						source={source}
-					/>
-				))}
-			</InfiniteScroll>
+						);
+					}}
+					hasMore={hasMore}
+					loader={<LoadingSpinner />}
+				>
+					{articlesToRender.map(({ headline, url, image, source }) => (
+						<Article
+							key={url}
+							headline={headline}
+							url={url}
+							img={image}
+							source={source}
+						/>
+					))}
+				</InfiniteScroll>
+			)}
 		</>
 	);
 }
